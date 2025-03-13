@@ -1,0 +1,16 @@
+/* src/index.css */
+@import "tailwindcss";
+
+
+body {
+  @apply bg-white relative;
+}
+
+.name-kh {
+  font-family: "Khmer os moul";
+}
+
+.welcome {
+  font-family: "Khmer os siemreap";
+  line-height: 1.5rem;
+}
