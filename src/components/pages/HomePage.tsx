@@ -1,12 +1,16 @@
-import slideshow from "../assets/images/slideshow.png"
-import mee1 from "../assets/images/mee1.png"
-import mee2 from "../assets/images/mee2.png"
-import student from "../assets/images/student.png"
+import slideshow from "../../assets/images/slideshow.png"
+import mee1 from "../../assets/images/mee1.png"
+import mee2 from "../../assets/images/mee2.png"
+import student from "../../assets/images/student.png"
 import { Play, TrendingUp } from "lucide-react"
-import video from "../assets/video.mp4"
+import video from "../../assets/video.mp4"
 import { useRef, useState } from "react"
+import { Sliders } from "../../utils/slider"
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
+import { Partnerships } from "../../utils/utils"
 
-const Content = () => {
+const HomePage = () => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -18,6 +22,46 @@ const Content = () => {
             videoRef.current.play();
         }
         setIsPlaying(!isPlaying);
+        }
+    };
+
+    const responsive = {
+        superLargeDesktop: {
+            // the naming can be any, depends on you.
+            breakpoint: { max: 4000, min: 3000 },
+            items: 9
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 9
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 5
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 3
+        }
+    };
+
+    const responsiveTeacher = {
+        superLargeDesktop: {
+            // the naming can be any, depends on you.
+            breakpoint: { max: 4000, min: 3000 },
+            items: 3
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 3
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1
         }
     };
 
@@ -84,7 +128,7 @@ const Content = () => {
                     View All <TrendingUp />
                 </button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-2 md:items-center bg-white shadow-md p-2 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-2 md:items-center bg-white shadow-md p-2 relative rounded-lg">
                 {/* Video Container */}
                 <div className="relative w-full">
                     <video
@@ -101,7 +145,7 @@ const Content = () => {
                         className="absolute inset-0 flex items-center justify-center bg-opacity-50 rounded-lg"
                         onClick={handlePlayPause}
                     >
-                        <div className="bg-white rounded-full p-3 flex items-center justify-center">
+                        <div className="bg-white rounded-full p-3 flex items-center justify-center cursor-pointer shadow-md">
                             <Play className="text-black" size={30} />
                         </div>
                     </button>
@@ -109,7 +153,7 @@ const Content = () => {
                 </div>
 
                 {/* Description Section */}
-                <div className="flex flex-col h-full w-full justify-around md:justify-center items-center gap-3 px-3 md:px-8 lg:px-16">
+                <div className="flex flex-col h-full w-full justify-start md:justify-center items-start gap-3 px-3 md:px-8 lg:px-16">
                     <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold">
                     Khmer General Knowledge Program
                     </h1>
@@ -118,8 +162,52 @@ const Content = () => {
                     </p>
                 </div>
             </div>
+            <h1 className="text-black text-lg uppercase font-bold">Teacher</h1>
+            <div className="grid w-full gap-2">
+                <Carousel
+                    responsive={responsiveTeacher}
+                    infinite={true}  // ✅ Enables infinite scrolling
+                    autoPlay={false}  // ✅ Disables autoplay
+                    arrows={true}  // ✅ Show arrows for navigation
+                    showDots={true} // ✅ Hide dots for a clean look
+                    containerClass="flex justify-center items-center w-full"
+                    itemClass="flex justify-center items-center w-full px-2"  // Add padding to space out items
+                >
+                    {Sliders.map((slider) => (
+                    <div className="flex flex-col items-center rounded-lg w-full h-auto">
+                        <img
+                        src={slider.url}
+                        alt="slider"
+                        className="w-full  object-cover" // Adjust the image size and maintain aspect ratio
+                        />
+                        <div className="bg-purple-600 text-center p-3 w-full rounded-b-lg text-white">
+                        <h2 className="uppercase">TEACHERS</h2>
+                        <p>Kindergarten</p>
+                        </div>
+                    </div>
+                    ))}
+                </Carousel>
+            </div>
+            <h1 className="text-black text-lg uppercase font-bold">Partnership</h1>
+            <div className="grid w-full border-1 border-purple-600 rounded-xl px-3 py-2">
+                <Carousel 
+                    responsive={responsive} 
+                    infinite={true}  // ✅ Enables infinite scrolling
+                    autoPlay={true}  // ✅ Enables autoplay
+                    autoPlaySpeed={4000}  // ✅ Adjust autoplay speed (2 seconds)
+                    transitionDuration={2000}  // ✅ Long duration for smooth animation
+                    arrows={false}  // ✅ Hide arrows for smooth infinite scroll
+                    showDots={false} // ✅ Hide dots for a clean look
+                    containerClass="flex justify-center items-center"
+                    itemClass="flex justify-center items-center"
+                >
+                    {Partnerships.map((partnership) => (
+                        <img src={partnership.url} alt="logo" />
+                    ))}
+                </Carousel>
+            </div>
         </div>
     )
 }
 
-export default Content;
+export default HomePage;

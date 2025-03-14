@@ -1,9 +1,13 @@
 /* src/index.css */
+/* In your styles.css or global.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&display=swap');
 @import "tailwindcss";
 
 
+
 body {
-  @apply bg-white relative;
+  @apply bg-white relative overflow-x-hidden;
 }
 
 .name-kh {
@@ -13,4 +17,13 @@ body {
 .welcome {
   font-family: "Khmer os siemreap";
   line-height: 1.5rem;
+}
+
+/* In your styles.css */
+.font-en {
+  font-family: 'Roboto', sans-serif; /* English font */
+}
+
+.font-kh {
+  font-family: 'Noto Sans Khmer', sans-serif; /* Khmer font */
 }

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
+import { NavLink, useLocation } from "react-router-dom";
+import { translate } from "../utils/lang";
 
 const NavBar = ({ menu }: any) => {
   const [isHover, setIsHover] = useState(false);
@@ -31,6 +33,15 @@ const NavBar = ({ menu }: any) => {
   };
 
   const hasSubMenu = menu?.subMenu?.length;
+  const location = useLocation(); // Get the current location
+
+  // Check if any submenu item is active by matching their paths with the current URL
+  const isSubMenuActive = menu?.subMenu?.some((submenu: any) => {
+    return submenu.path && location.pathname === submenu.path;
+  });
+
+  // Check if the menu itself is active (for menus without submenus)
+  const isMenuActive = menu.path && location.pathname === menu.path;
 
   return (
     <motion.li
@@ -39,8 +50,16 @@ const NavBar = ({ menu }: any) => {
       onMouseLeave={toggleHoverMenu}
       key={menu.name}
     >
-      <span className="relative flex items-center px-2 py-1 text-purple-600 text-md font-bold gap-2">
-        {menu.name}
+      <NavLink
+        to={menu.path || "#"}
+        className={({ isActive }) => {
+          // If the menu has a submenu, mark it as active if any of its submenu items is active
+          // Otherwise, check if the menu itself is active
+          const parentActive = hasSubMenu ? isSubMenuActive : isMenuActive || isActive;
+          return `relative flex items-center px-2 py-1 text-md font-medium gap-2 transition-all duration-300 text-purple-600`;
+        }}
+      >
+        {translate(menu.translate)}
         {hasSubMenu && (
           <ChevronDown
             size={20}
@@ -48,14 +67,18 @@ const NavBar = ({ menu }: any) => {
           />
         )}
 
-        {/* Underline effect (CSS) */}
-        <span className="absolute bottom-0 left-0 w-full h-[2px] bg-purple-600 transform origin-left scale-x-0 group-hover/link:scale-x-100 transition-all duration-300"></span>
-      </span>
+        {/* Underline effect */}
+        <span
+          className={`absolute bottom-0 left-0 w-full h-[2px] bg-purple-600 transform origin-left 
+          transition-all duration-300 ${isSubMenuActive || isMenuActive ? "scale-x-100" : "scale-x-0"} 
+          group-hover/link:scale-x-100`}
+        ></span>
+      </NavLink>
 
       {/* Submenu Dropdown with Framer Motion */}
       {hasSubMenu && (
         <motion.ul
-          className="absolute top-full left-1/2 transform -translate-x-1/2 bg-white shadow-md rounded-md z-20 p-3 space-y-1 w-auto min-w-[250px] transition-all duration-300 ease-out"
+          className="absolute top-full left-1/2 transform -translate-x-1/2 bg-white shadow-md rounded-md z-20 p-3 space-y-1 w-auto min-w-[250px] transition-all duration-300 ease-out mt-2" // Added mt-2 here
           initial="exit"
           animate={isHover ? "enter" : "exit"}
           variants={subMenuAnimate}
@@ -65,11 +88,16 @@ const NavBar = ({ menu }: any) => {
 
           {/* Submenu items */}
           {menu.subMenu.map((submenu: any) => (
-            <li
-              key={submenu.name}
-              className="px-4 py-2 text-purple-600 hover:bg-purple-100 cursor-pointer"
-            >
-              {submenu.name}
+            <li key={submenu.name} className="cursor-pointer">
+              <NavLink
+                to={submenu.path}
+                className={({ isActive }) =>
+                  `block px-4 py-2 text-purple-600 hover:bg-purple-100 
+                  ${isActive ? "bg-purple-200 font-semibold" : ""}`
+                }
+              >
+                {submenu.name}
+              </NavLink>
             </li>
           ))}
         </motion.ul>
