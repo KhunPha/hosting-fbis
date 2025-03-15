@@ -52,10 +52,9 @@ const NavBar = ({ menu }: any) => {
     >
       <NavLink
         to={menu.path || "#"}
-        className={({ isActive }) => {
+        className={() => {
           // If the menu has a submenu, mark it as active if any of its submenu items is active
           // Otherwise, check if the menu itself is active
-          const parentActive = hasSubMenu ? isSubMenuActive : isMenuActive || isActive;
           return `relative flex items-center px-2 py-1 text-md font-medium gap-2 transition-all duration-300 text-purple-600`;
         }}
       >
