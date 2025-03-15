@@ -93,7 +93,7 @@ const NavBar = ({ menu }: any) => {
                 to={submenu.path}
                 className={({ isActive }) =>
                   `block px-4 py-2 text-purple-600 hover:bg-purple-100 
-                  ${isActive ? "bg-purple-200 font-semibold" : ""}`
+                  ${isActive ? "bg-purple-200" : ""}`
                 }
               >
                 {submenu.name}

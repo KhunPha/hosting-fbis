@@ -10,6 +10,10 @@ body {
   @apply bg-white relative overflow-x-hidden;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .name-kh {
   font-family: "Khmer os moul";
 }

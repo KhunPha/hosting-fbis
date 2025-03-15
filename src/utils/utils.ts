@@ -84,16 +84,7 @@ export const Menus = [
     {
         name: "Tuition Fee",
         translate: "menu_tuition_fee",
-        subMenu: [
-            {
-                name: "Khmer General Education",
-                path: "/khmergentuition"
-            },
-            {
-                name: "English Full Time Young Learner",
-                path: "/engfulltuition"
-            }
-        ]
+        path: "/tuition"
     },
     {
         name: "Career",

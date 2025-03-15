@@ -3,17 +3,25 @@ import { useState, useEffect } from "react";
 import cambodia from "./assets/images/cambodia.png";
 import english from "./assets/images/english.png";
 import NavBar from "./components/NavBar";
-import logo from "./assets/react.svg";
+import logo from "./assets/images/fbislogo.png";
 import { Menus } from "./utils/utils.ts";
 import { motion } from "framer-motion";
 import HomePage from "./components/pages/HomePage.tsx";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import NotFound from "./components/pages/NotFound.tsx";
-import { translate, setLang } from "./utils/lang.ts"
+import { setLang } from "./utils/lang.ts"
 import PresidentPage from "./components/pages/PresidentPage.tsx";
 import HistoryPage from "./components/pages/HistoryPage.tsx";
 import LicensePage from "./components/pages/LicensePage.tsx";
 import ExecutivePage from "./components/pages/ExecutivePage.tsx";
+import OurLogoPage from "./components/pages/OurLogoPage.tsx";
+import StructurePage from "./components/pages/StructurePage.tsx";
+import PartnershipPage from "./components/pages/PartnershipPage.tsx";
+import ProgramKhPage from "./components/pages/ProgramKhPage.tsx";
+import ProgramEnPage from "./components/pages/ProgramEnPage.tsx";
+import DocumentPage from "./components/pages/DocumentPage.tsx";
+import NewsPage from "./components/pages/NewsPage.tsx";
+import TuitionPage from "./components/pages/TuitionPage.tsx";
 
 const App = () => {
   const [lang, setLangState] = useState(localStorage.getItem("language") || "en");
@@ -56,7 +64,7 @@ const App = () => {
       <Router>
         <nav className={`sticky top-0 flex items-center bg-white shadow-md justify-between px-5 py-2 z-[999]`}>
           <div className="flex items-center text-purple-600 space-x-2 font-semibold">
-            <img src={logo} alt="Logo" className="h-[40px]" />
+            <img src={logo} alt="Logo" className="h-[50px]" />
             <div className="block items-center text-center">
               <p className="text-md name-kh">សាលា អន្តរជាតិភ្យូឆឺរប្រាយ</p>
               <p className="text-sm">Future Bright International School</p>
@@ -93,6 +101,14 @@ const App = () => {
             <Route path="/history" element={<HistoryPage />} />
             <Route path="/license" element={<LicensePage />} />
             <Route path="/executive" element={<ExecutivePage />} />
+            <Route path="/ourlogo" element={<OurLogoPage />} />
+            <Route path="/structure" element={<StructurePage />} />
+            <Route path="/partnership" element={<PartnershipPage />} />
+            <Route path="/khmergen" element={<ProgramKhPage />} />
+            <Route path="/engfull" element={<ProgramEnPage />} />
+            <Route path="/documents" element={<DocumentPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/tuition" element={<TuitionPage />} />
           </Routes>
         </div>
       </Router>
