@@ -22,18 +22,12 @@ import ProgramEnPage from "./components/pages/ProgramEnPage.tsx";
 import DocumentPage from "./components/pages/DocumentPage.tsx";
 import NewsPage from "./components/pages/NewsPage.tsx";
 import TuitionPage from "./components/pages/TuitionPage.tsx";
+import CareerPage from "./components/pages/CareerPage.tsx";
+import MobBar from "./components/MobBar.tsx";
 
 const App = () => {
   const [lang, setLangState] = useState(localStorage.getItem("language") || "en");
   const [drawer, setDrawer] = useState(false);
-
-  useEffect(() => {
-    if (drawer) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [drawer]);
 
   const handleLang = () => {
     const language = lang === "en" ? "kh" : "en";
@@ -109,28 +103,32 @@ const App = () => {
             <Route path="/documents" element={<DocumentPage />} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/tuition" element={<TuitionPage />} />
+            <Route path="/career" element={<CareerPage />} />
           </Routes>
         </div>
-      </Router>
 
-      {/* Drawer */}
-      <div
-        className={`absolute top-0 left-0 w-screen sm:w-sm h-screen flex flex-col p-3 bg-white rounded-tr-md rounded-br-md transition-all duration-300 ${
-          drawer ? "translate-x-0" : "-translate-x-full"
-        } xl:-translate-x-full z-[999]`}
-      >
-        <div className="flex items-center text-purple-600 space-x-2 font-semibold justify-between">
-          <img src={logo} alt="Logo" className="h-[40px]" />
-          <div className="block items-center text-center">
-            <p className="text-md name-kh">សាលា អន្តរជាតិភ្យូឆឺរប្រាយ</p>
-            <p className="text-sm">Future Bright International School</p>
+        {/* Drawer */}
+        <div
+          className={`fixed top-0 left-0 w-screen sm:w-sm h-screen flex flex-col p-3 bg-white rounded-tr-md rounded-br-md transition-all duration-300 ${
+            drawer ? "translate-x-0" : "-translate-x-full"
+          } xl:-translate-x-full z-[1000] gap-y-16 shadow-lg`}
+        >
+          <div className="flex items-center text-purple-600 space-x-2 font-semibold justify-between">
+            <img src={logo} alt="Logo" className="h-[40px]" />
+            <div className="block items-center text-center">
+              <p className="text-md name-kh">សាលា អន្តរជាតិភ្យូឆឺរប្រាយ</p>
+              <p className="text-sm">Future Bright International School</p>
+            </div>
+            <button className="cursor-pointer" onClick={handleDrawer}>
+              <X size={25} />
+            </button>
           </div>
-          <button className="cursor-pointer" onClick={handleDrawer}>
-            <X size={25} />
-          </button>
+          {/* Add other drawer content like NavBar items */}
+          <div className="flex flex-col overflow-y-auto hide-scrollbar">
+            <MobBar Menus={Menus} handleDrawerClose={handleDrawer} />
+          </div>
         </div>
-        {/* Add other drawer content like NavBar items */}
-      </div>
+      </Router>
     </div>
   );
 };

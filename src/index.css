@@ -14,6 +14,10 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .name-kh {
   font-family: "Khmer os moul";
 }
