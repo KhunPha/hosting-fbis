@@ -22,7 +22,7 @@ const MobBar = ({ Menus, handleDrawerClose }: any) => {
 
                 return (
                     <li key={name} className="group/link cursor-pointer">
-                        <div
+                        <button
                             className={`flex justify-between items-center py-3 px-2 rounded-md 
                                 ${isMainMenuActive ? "text-purple-600 font-semibold bg-purple-100" : "group-hover/link:bg-purple-600/20"}`}
                             onClick={() => hasSubMenu && setClicked(isClicked ? null : i)}
@@ -42,7 +42,7 @@ const MobBar = ({ Menus, handleDrawerClose }: any) => {
                                     className={`transition-transform duration-300 ${isClicked ? "rotate-180" : ""}`}
                                 />
                             )}
-                        </div>
+                        </button>
 
                         {hasSubMenu && (
                             <motion.ul

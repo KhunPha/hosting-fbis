@@ -24,6 +24,7 @@ import NewsPage from "./components/pages/NewsPage.tsx";
 import TuitionPage from "./components/pages/TuitionPage.tsx";
 import CareerPage from "./components/pages/CareerPage.tsx";
 import MobBar from "./components/MobBar.tsx";
+import GalleryPage from "./components/pages/GalleryPage.tsx";
 
 const App = () => {
   const [lang, setLangState] = useState(localStorage.getItem("language") || "en");
@@ -104,6 +105,7 @@ const App = () => {
             <Route path="/news" element={<NewsPage />} />
             <Route path="/tuition" element={<TuitionPage />} />
             <Route path="/career" element={<CareerPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
           </Routes>
         </div>
 
