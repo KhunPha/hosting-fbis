@@ -9,6 +9,8 @@ import { Sliders } from "../../utils/slider"
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 import { Partnerships } from "../../utils/utils"
+import { motion } from "framer-motion"
+import { containerVariants } from "../../utils/switch"
 
 const HomePage = () => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -66,7 +68,12 @@ const HomePage = () => {
     };
 
     return (
-        <div className="space-y-5">
+        <motion.div className="space-y-5"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+        >
             <img src={slideshow} alt="" className="w-full" />
             <div className="grid grid-cols-1 space-y-2 items-center lg:grid-cols-2 p-3 bg-purple-600 shadow-md rounded-lg text-white lg:space-x-2">
                 <div className="flex flex-col space-y-1">
@@ -206,7 +213,7 @@ const HomePage = () => {
                     ))}
                 </Carousel>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

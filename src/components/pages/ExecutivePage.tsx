@@ -2,6 +2,8 @@ import vuthy from "../../assets/images/vuthy.png";
 import samath from "../../assets/images/oh_samath.png";
 import { useEffect, useState } from "react";
 import ShowDetailsExe from "../ShowDetailsExe";
+import { motion } from "framer-motion";
+import { containerVariants } from "../../utils/switch";
 
 const ExecutivePage = () => {
     const [details, setDetails] = useState(false);
@@ -17,7 +19,12 @@ const ExecutivePage = () => {
     };
 
     return (
-        <div className="w-full relative">
+        <motion.div className="w-full relative"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+        >
             <h1 className="text-black text-lg uppercase font-medium">Executive Committee</h1>
 
             {/* Top Management */}
@@ -64,7 +71,7 @@ const ExecutivePage = () => {
                     <ShowDetailsExe index={selectedIndex} key={selectedIndex} />
                 </div>
             )}
-        </div>
+        </motion.div>
     );
 };
 

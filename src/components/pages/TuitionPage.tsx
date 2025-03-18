@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { containerVariants } from "../../utils/switch";
 
 const TuitionPage = () => {
     const [tab, setTab] = useState("tab1")
@@ -8,7 +10,12 @@ const TuitionPage = () => {
     }
 
     return (
-        <div className="w-full">
+        <motion.div className="w-full"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+        >
             <div className="flex flex-col md:flex-row items-center">
                 <h1 className="text-xl font-bold md:mr-6 mb-6 md:mb-0">Tuition Fee</h1>
                 <div className="grid grid-cols-2 p-1 bg-gray-300 rounded-lg gap-1">
@@ -108,7 +115,7 @@ const TuitionPage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

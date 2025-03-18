@@ -1,8 +1,15 @@
 import it from "../../assets/images/it.png"
+import { containerVariants } from "../../utils/switch";
+import { motion } from "framer-motion";
 
 const CareerPage = () => {
     return (
-        <div className="w-full">
+        <motion.div className="w-full"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+        >
             <h1 className="text-black text-lg uppercase font-medium">Career</h1>
             <p className="mt-6 mb-7">Career opportunity page and find a position that suits your qualifications.</p>
             <hr />
@@ -23,7 +30,7 @@ const CareerPage = () => {
                         </div>
                     </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

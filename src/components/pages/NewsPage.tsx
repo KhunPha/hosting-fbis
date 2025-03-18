@@ -1,10 +1,17 @@
 import newsvuthy from "../../assets/images/newsvuthy.png"
 import newsteacher from "../../assets/images/newsteacher.png"
 import { Dot } from "lucide-react";
+import { motion } from "framer-motion";
+import { containerVariants } from "../../utils/switch";
 
 const NewsPage = () => {
     return (
-        <div className="w-full space-y-5">
+        <motion.div className="w-full space-y-5"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+        >
             <div className="flex flex-col md:flex-row shadow-md rounded-lg px-3 py-2 gap-y-3 md:gap-x-3 md:gap-y-0">
                 <img src={newsvuthy} alt="" className="object-cover rounded-lg" />
                 <div className="flex flex-col justify-between px-2">
@@ -15,7 +22,7 @@ const NewsPage = () => {
                         <p className="text-gray-400 text-sm mb-5 mt-3">The management, guardians and students who achieved Grade A (19) of Future Bright International School 
     attended the ceremony to congratulate and award motorbikes to 221 students who achieved Grade A in the 
     Siem Reap Province Secondary School Examination results, October 8, 2024, under the chairmanship of His 
-    Royal Highness Prince Tea Banh, Supreme Personal Advisor to His Majesty the King of Cambodia.  Saturday, 13th Kert, Moon, Year of the Monkey, Buddhist Era 2568 Corresponding to January 11, 2025</p>
+    Royal Highness Prince Tea Banh, Supreme Personal Advisor to His Majesty the King of Cambodia.Saturday, 13th Kert, Moon, Year of the Monkey, Buddhist Era 2568 Corresponding to January 11, 2025</p>
                     </div>
                     <p className="text-gray-400 text-sm">Academic Program</p>
                 </div>
@@ -37,7 +44,7 @@ const NewsPage = () => {
                     </div>
                 ))}
             </div>
-        </div>
+        </motion.div>
     );
 };
 

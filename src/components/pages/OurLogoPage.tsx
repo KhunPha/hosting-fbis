@@ -1,8 +1,15 @@
 import fbislogo from "../../assets/images/fbislogo.png"
+import { motion } from "framer-motion";
+import { containerVariants } from "../../utils/switch";
 
 const OurLogoPage = () => {
     return (
-        <div className="w-full">
+        <motion.div className="w-full"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+        >
             <h1 className="text-black text-lg uppercase font-medium">History FBIS</h1>
             <div className="flex flex-col justify-center items-center md:justify-start md:items-start md:flex-row mt-5 space-x-7">
                 <img src={fbislogo} alt="" className="w-[300px] h-fit mx-auto" />
@@ -51,7 +58,7 @@ const OurLogoPage = () => {
                     </ul>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

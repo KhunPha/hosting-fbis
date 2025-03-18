@@ -1,6 +1,8 @@
 import { useState } from "react";
 import StudyTab from "../StudyTab";
 import ExamTab from "../ExamTab";
+import { motion } from "framer-motion";
+import { containerVariants } from "../../utils/switch";
 
 const GalleryPage = () => {
     const [tab, setTab] = useState("tab1")
@@ -10,7 +12,12 @@ const GalleryPage = () => {
     }
 
     return (
-        <div className="w-full">
+        <motion.div className="w-full"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+        >
             <h1 className="text-purple-600 text-2xl uppercase font-bold mt-6 text-center">Future Bright International School Memorial Photo Gallery</h1>
             <div className="w-full flex items-center justify-center mt-3">
                 <div className="w-[250px] h-[2px] bg-red-600">
@@ -37,7 +44,7 @@ const GalleryPage = () => {
             <div className="flex flex-col mt-6 items-center">
                 {tab === "tab1" ? <StudyTab /> : <ExamTab />}
             </div>
-        </div>
+        </motion.div>
     )
 }
 

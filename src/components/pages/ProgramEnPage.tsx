@@ -1,10 +1,17 @@
 import { GraduationCap } from "lucide-react";
 import studenteng from "../../assets/images/studenteng.png"
 import { Partnerships } from "../../utils/utils";
+import { motion } from "framer-motion";
+import { containerVariants } from "../../utils/switch";
 
 const ProgramEnPage = () => {
     return (
-        <div className="w-full">
+        <motion.div className="w-full"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+        >
             <h1 className="text-black text-lg uppercase font-medium">Khmer General Education</h1>
             <div className="flex flex-col mt-5">
                 <p className="text-justify mb-7">Future Bright International School is committed to reforming and modernizing Khmer General Education by employing soft skills, life skills, resourceful library, laboratory, STEM and computer sessions which facilitates teaching and learning in the 21st Century Education</p>
@@ -42,7 +49,7 @@ const ProgramEnPage = () => {
                     ))}
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

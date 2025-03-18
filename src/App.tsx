@@ -5,7 +5,6 @@ import english from "./assets/images/english.png";
 import NavBar from "./components/NavBar";
 import logo from "./assets/images/fbislogo.png";
 import { Menus } from "./utils/utils.ts";
-import { motion } from "framer-motion";
 import HomePage from "./components/pages/HomePage.tsx";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import NotFound from "./components/pages/NotFound.tsx";
@@ -25,6 +24,7 @@ import TuitionPage from "./components/pages/TuitionPage.tsx";
 import CareerPage from "./components/pages/CareerPage.tsx";
 import MobBar from "./components/MobBar.tsx";
 import GalleryPage from "./components/pages/GalleryPage.tsx";
+import { AnimatePresence, motion } from "framer-motion";
 
 const App = () => {
   const [lang, setLangState] = useState(localStorage.getItem("language") || "en");
@@ -89,24 +89,26 @@ const App = () => {
         </nav>
 
         <div className="flex mx-auto px-2 sm:w-auto sm:px-2 md:w-[768px] lg:w-[1024px] xl:w-[1200px] mt-4">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/president" element={<PresidentPage />} />
-            <Route path="/history" element={<HistoryPage />} />
-            <Route path="/license" element={<LicensePage />} />
-            <Route path="/executive" element={<ExecutivePage />} />
-            <Route path="/ourlogo" element={<OurLogoPage />} />
-            <Route path="/structure" element={<StructurePage />} />
-            <Route path="/partnership" element={<PartnershipPage />} />
-            <Route path="/khmergen" element={<ProgramKhPage />} />
-            <Route path="/engfull" element={<ProgramEnPage />} />
-            <Route path="/documents" element={<DocumentPage />} />
-            <Route path="/news" element={<NewsPage />} />
-            <Route path="/tuition" element={<TuitionPage />} />
-            <Route path="/career" element={<CareerPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-          </Routes>
+          <AnimatePresence>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="*" element={<NotFound />} />
+              <Route path="/president" element={<PresidentPage />} />
+              <Route path="/history" element={<HistoryPage />} />
+              <Route path="/license" element={<LicensePage />} />
+              <Route path="/executive" element={<ExecutivePage />} />
+              <Route path="/ourlogo" element={<OurLogoPage />} />
+              <Route path="/structure" element={<StructurePage />} />
+              <Route path="/partnership" element={<PartnershipPage />} />
+              <Route path="/khmergen" element={<ProgramKhPage />} />
+              <Route path="/engfull" element={<ProgramEnPage />} />
+              <Route path="/documents" element={<DocumentPage />} />
+              <Route path="/news" element={<NewsPage />} />
+              <Route path="/tuition" element={<TuitionPage />} />
+              <Route path="/career" element={<CareerPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
+            </Routes>
+          </AnimatePresence>
         </div>
 
         {/* Drawer */}

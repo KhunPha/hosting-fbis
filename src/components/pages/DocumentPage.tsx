@@ -1,10 +1,17 @@
 import { ArrowDownToLine, Eye } from "lucide-react";
 import fbislogo from "../../assets/images/fbislogo.png"
 import { Partnerships } from "../../utils/utils";
+import { motion } from "framer-motion";
+import { containerVariants } from "../../utils/switch";
 
 const DocumentPage = () => {
     return (
-        <div className="w-full">
+        <motion.div className="w-full"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+        >
             <h1 className="text-black text-lg uppercase font-medium">History FBIS</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 mt-5 md:gap-x-3 gap-y-5">
                 <div className="grid grid-cols-2 px-3">
@@ -46,7 +53,7 @@ const DocumentPage = () => {
                     </div>
                 ))}
             </div>
-        </div>
+        </motion.div>
     );
 };
 

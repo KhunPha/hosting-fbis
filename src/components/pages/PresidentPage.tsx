@@ -1,8 +1,15 @@
 import president from "../../assets/images/president.png"
+import { motion } from "framer-motion"
+import { containerVariants } from "../../utils/switch";
 
 const PresidentPage = () => {
     return (
-        <div className="flex flex-col w-full">
+        <motion.div className="flex flex-col w-full"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+        >
             <h1 className="text-black text-lg uppercase font-medium">President's Message</h1>
             <div className="flex items-center flex-col justify-center space-y-5 sm:flex-row shadow-md text-black w-full h-auto mt-5">
                 <img src={president} alt="president" className="sm:ml-[20px] sm:mr-[20px] md:ml-[50px] md:mr-[50px] lg:ml-[50px] lg:mr-[100px] xl:ml-[50px] xl:mr-[150px]" />
@@ -15,7 +22,7 @@ const PresidentPage = () => {
 បន្តការសិក្សានៅសាកលវិទ្យាល័យ</p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
