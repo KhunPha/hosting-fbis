@@ -12,7 +12,7 @@ import { Partnerships } from "../../utils/utils"
 import { motion } from "framer-motion"
 import { containerVariants } from "../../utils/switch"
 
-const CustomDot = ({ onMove, index, onClick, active }: any) => {
+const CustomDot = ({ onClick, active }: any) => {
     return (
       <button
         onClick={() => onClick()}
