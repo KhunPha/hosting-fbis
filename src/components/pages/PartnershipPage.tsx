@@ -10,10 +10,10 @@ const PartnershipPage = () => {
             animate="visible"
             exit="exit"
         >
-            <h1 className="text-black text-lg uppercase font-medium">History FBIS</h1>
+            <h1 className="text-black text-lg uppercase font-medium">Partnership</h1>
             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 justify-center mt-5 gap-3">
                 {Partnerships.map((img) => (
-                    <img src={img.url} alt=""  className="w-[150px] mx-auto" />
+                    <img src={img.url} alt=""  className="w-[150px] mx-auto" key={img.url} />
                 ))}
             </div>
         </motion.div>

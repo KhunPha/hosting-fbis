@@ -58,7 +58,7 @@ const NavBar = ({ menu }: any) => {
           return `relative flex items-center px-2 py-1 text-md font-medium gap-2 transition-all duration-300 text-purple-600`;
         }}
       >
-        {translate(menu.translate)}
+        {translate(menu.trans)}
         {hasSubMenu && (
           <ChevronDown
             size={20}

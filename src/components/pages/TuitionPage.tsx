@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { containerVariants } from "../../utils/switch";
+import { Grades } from "../../utils/utils";
 
 const TuitionPage = () => {
     const [tab, setTab] = useState("tab1")
+    const [selectedIndex, setSelectedIndex] = useState(0)
 
     const handleTab = (tab: any) => {
         setTab(tab);
+    }
+
+    const handleSelectedIndex = (index: any) => {
+        setSelectedIndex(index);
     }
 
     return (
@@ -30,8 +36,23 @@ const TuitionPage = () => {
             <hr className="mt-10 mb-7"/>
 
             {/* Tab Grade */}
-            <div>
-
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:flex space-y-3 md:space-y-0 md:flex-row md:space-x-3 lg:space-x-8 mb-6">
+                { Grades.map((grade, index) => (
+                    <button className="flex flex-col text-center cursor-pointer" key={grade.name} onClick={() => handleSelectedIndex(index)}>
+                        <p className={`p-2 ${selectedIndex === index ? "text-black" : "text-gray-400"} mx-auto`}>{grade.name}</p>
+                        {selectedIndex === index ?
+                                <motion.div 
+                                    layoutId="underline"
+                                    className="w-full h-[2px] bg-purple-600 mx-auto"
+                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                />
+                                :
+                                <div
+                                    className="w-full h-[2px] mx-auto"
+                                ></div>
+                        }
+                    </button>
+                ))}
             </div>
 
             <div className="flex flex-col">

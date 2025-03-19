@@ -11,12 +11,12 @@ import logo9 from "../assets/partnership/9.png"
 export const Menus = [
     {
         name: "Home",
-        translate: "menu_home",
+        trans: "menu_home",
         path: "/"
     },
     {
         name: "About US",
-        translate: "menu_about",
+        trans: "menu_about",
         subMenu: [
             {
                 name: "President's Message",
@@ -54,12 +54,12 @@ export const Menus = [
     },
     {
         name: "Gallery",
-        translate: "menu_gallery",
+        trans: "menu_gallery",
         path: "/gallery"
     },
     {
         name: "Program",
-        translate: "menu_program",
+        trans: "menu_program",
         subMenu: [
             {
                 name: "Khmer General Education",
@@ -73,22 +73,22 @@ export const Menus = [
     },
     {
         name: "Documents",
-        translate: "menu_document",
+        trans: "menu_document",
         path: "/documents"
     },
     {
         name: "News & Events",
-        translate: "menu_news",
+        trans: "menu_news",
         path: "/news"
     },
     {
         name: "Tuition Fee",
-        translate: "menu_tuition_fee",
+        trans: "menu_tuition_fee",
         path: "/tuition"
     },
     {
         name: "Career",
-        translate: "menu_career",
+        trans: "menu_career",
         path: "/career"
     },
 ]
@@ -121,4 +121,31 @@ export const Partnerships = [
     {
         url: logo9
     },
+]
+
+export const Grades = [
+    {
+        name: "Kindergarten"
+    },
+    {
+        name: "Grade 1-6"
+    },
+    {
+        name: "Grade 7"
+    },
+    {
+        name: "Grade 8"
+    },
+    {
+        name: "Grade 9"
+    },
+    {
+        name: "Grade 10"
+    },
+    {
+        name: "Grade 11"
+    },
+    {
+        name: "Grade 12"
+    }
 ]

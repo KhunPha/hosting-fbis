@@ -10,7 +10,7 @@ const OurLogoPage = () => {
             animate="visible"
             exit="exit"
         >
-            <h1 className="text-black text-lg uppercase font-medium">History FBIS</h1>
+            <h1 className="text-black text-lg uppercase font-medium">Our FBIS Logo</h1>
             <div className="flex flex-col justify-center items-center md:justify-start md:items-start md:flex-row mt-5 space-x-7">
                 <img src={fbislogo} alt="" className="w-[300px] h-fit mx-auto" />
                 <div className="welcome text-justify">

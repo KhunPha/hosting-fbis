@@ -12,7 +12,7 @@ const DocumentPage = () => {
             animate="visible"
             exit="exit"
         >
-            <h1 className="text-black text-lg uppercase font-medium">History FBIS</h1>
+            <h1 className="text-black text-lg uppercase font-medium">Documents</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 mt-5 md:gap-x-3 gap-y-5">
                 <div className="grid grid-cols-2 px-3">
                     <div className="grid grid-cols-3">

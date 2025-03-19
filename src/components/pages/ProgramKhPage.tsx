@@ -17,7 +17,7 @@ const ProgramKhPage = () => {
                 <p className="text-justify mb-7">Future Bright International School is committed to reforming and modernizing Khmer General Education by employing soft skills, life skills, resourceful library, laboratory, STEM and computer sessions which facilitates teaching and learning in the 21st Century Education</p>
                 <div className="flex flex-col space-y-3">
                     {Partnerships.map((_, index) => (
-                        <div className="grid gap-y-3 sm:grid-cols-2 items-center px-3 py-2 border-1 border-gray rounded-lg" key={index}>
+                        <div className="grid gap-y-3 sm:grid-cols-2 items-center px-3 py-2 border-1 border-gray-400 rounded-lg" key={index}>
                             <div className="flex flex-row space-x-3">
                                 <img src={studentpro} alt=""/>
                                 <div className="flex flex-col ">

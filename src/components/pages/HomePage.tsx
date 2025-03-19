@@ -12,6 +12,23 @@ import { Partnerships } from "../../utils/utils"
 import { motion } from "framer-motion"
 import { containerVariants } from "../../utils/switch"
 
+const CustomDot = ({ onMove, index, onClick, active }: any) => {
+    return (
+      <button
+        onClick={() => onClick()}
+        style={{
+          width: "10px",
+          height: "10px",
+          margin: "0 5px",
+          borderRadius: "50%",
+          backgroundColor: active ? "#6B21A8" : "#D1D5DB", // Change active to purple (#6B21A8), inactive to gray (#D1D5DB)
+          border: "none",
+          outline: "none",
+        }}
+      />
+    );
+  };
+
 const HomePage = () => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -177,11 +194,12 @@ const HomePage = () => {
                     autoPlay={false}  // ✅ Disables autoplay
                     arrows={true}  // ✅ Show arrows for navigation
                     showDots={true} // ✅ Hide dots for a clean look
+                    customDot={<CustomDot />}
                     containerClass="flex justify-center items-center w-full"
                     itemClass="flex justify-center items-center w-full px-2"  // Add padding to space out items
                 >
                     {Sliders.map((slider) => (
-                    <div className="flex flex-col items-center rounded-lg w-full h-auto">
+                    <div className="flex flex-col items-center rounded-lg w-full h-auto" key={slider.url}>
                         <img
                         src={slider.url}
                         alt="slider"
@@ -201,7 +219,7 @@ const HomePage = () => {
                     responsive={responsive} 
                     infinite={true}  // ✅ Enables infinite scrolling
                     autoPlay={true}  // ✅ Enables autoplay
-                    autoPlaySpeed={4000}  // ✅ Adjust autoplay speed (2 seconds)
+                    autoPlaySpeed={500}  // ✅ Adjust autoplay speed (2 seconds)
                     transitionDuration={2000}  // ✅ Long duration for smooth animation
                     arrows={false}  // ✅ Hide arrows for smooth infinite scroll
                     showDots={false} // ✅ Hide dots for a clean look
@@ -209,7 +227,7 @@ const HomePage = () => {
                     itemClass="flex justify-center items-center"
                 >
                     {Partnerships.map((partnership) => (
-                        <img src={partnership.url} alt="logo" />
+                        <img src={partnership.url} alt="logo" key={partnership.url} />
                     ))}
                 </Carousel>
             </div>

@@ -10,7 +10,7 @@ const StructurePage = () => {
             animate="visible"
             exit="exit"
         >
-            <h1 className="text-black text-lg uppercase font-medium">History FBIS</h1>
+            <h1 className="text-black text-lg uppercase font-medium">Structure FBIS</h1>
             <div className="flex justify-center mt-5">
                 <img src={structure} alt="" />
             </div>

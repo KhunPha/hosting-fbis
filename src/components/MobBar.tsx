@@ -2,6 +2,7 @@ import { ChevronDown } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { translate } from "../utils/lang";
 
 const MobBar = ({ Menus, handleDrawerClose }: any) => {
     const [clicked, setClicked] = useState<number | null>(null);
@@ -14,14 +15,14 @@ const MobBar = ({ Menus, handleDrawerClose }: any) => {
 
     return (
         <ul className="flex flex-col space-y-3 text-purple-600 font-medium">
-            {Menus.map(({ name, subMenu, path }: any, i: number) => {
+            {Menus.map(({ name, subMenu, trans, path }: any, i: number) => {
                 const hasSubMenu = subMenu?.length > 0;
                 const isSubMenuActive = hasSubMenu && subMenu.some((submenu: any) => location.pathname === submenu.path);
                 const isMainMenuActive = location.pathname === path || isSubMenuActive;
                 const isClicked = clicked === i;
 
                 return (
-                    <li key={name} className="group/link cursor-pointer">
+                    <li key={name} className="group/link cursor-pointer h-full">
                         <div
                             className={`flex justify-between items-center py-3 px-2 rounded-md 
                                 ${isMainMenuActive ? "text-purple-600 font-semibold bg-purple-100" : "group-hover/link:bg-purple-600/20"}`}
@@ -29,12 +30,12 @@ const MobBar = ({ Menus, handleDrawerClose }: any) => {
                         >
                             <NavLink
                                 to={path || "#"}
-                                className="w-full"
+                                className="w-full h-full"
                                 onClick={() => {
                                     if (path) handleDrawerClose(); // Close drawer when clicking a direct link
                                 }}
                             >
-                                {name}
+                                {translate(trans)}
                             </NavLink>
                             {hasSubMenu && (
                                 <ChevronDown
