@@ -54,7 +54,7 @@ const App = () => {
             <p className="text-sm">099 514 681</p>
           </div>
           <button className="block items-center cursor-pointer" onClick={handleLang}>
-            <img src={lang === "en" ? english : cambodia} alt="language" className="w-8 h-5 rounded-sm" />
+            <img src={lang === "en" ? cambodia : english} alt="language" className="w-8 h-5 rounded-sm" />
           </button>
         </header>
 

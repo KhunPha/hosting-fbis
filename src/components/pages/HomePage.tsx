@@ -105,7 +105,7 @@ const HomePage = () => {
                 </div>
                 <img src={mee1} alt="" className="h-full w-full object-cover rounded-lg" />
             </div>
-            <div className="flex flex-col lg:flex-row space-y-2 lg:flex-3 p-3 bg-gray-100 rounded-lg shadow-md lg:space-x-2">
+            <div className="flex flex-col lg:flex-row space-y-2 lg:flex-3 p-3 rounded-lg shadow-md lg:space-x-2">
                 <img src={mee2} alt="" className="flex-1 h-full w-full object-cover rounded-lg" />
                 <div className="flex-2 lg:p-5 space-y-2">
                     <h4 className="text-gray-400 font-medium">News</h4>
